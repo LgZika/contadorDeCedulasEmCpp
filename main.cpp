@@ -3,6 +3,23 @@
 
 using namespace std;
 
+string menu(string input){
+	cout << "==================================" << endl;
+	cout << "          Menu Principal          " << endl;
+	cout << "==================================" << endl;
+	cout << " - Sacar" << endl;
+	cout << " - Cadastrar Cedulas" << endl;
+	cout << " - Ajuda" << endl;
+	cout << "==================================" << endl;
+	cout << "   Opcao: ";
+	cin >> input;
+	cout << size(input) << endl;
+	for(int i = 0; i < size(input); i++){
+		tolower(input[i]);
+	}
+	return input;
+}
+
 void registerNotes(int *valueBanknotes, int typeBanknotes) {
 	cout << "=================================" << endl;
 	cout << "Registro dos " + to_string(typeBanknotes) + " valores de notas" << endl;
@@ -26,22 +43,16 @@ void countNotes(int *numberBanknotes, int *valueBanknotes, int withdraw, int typ
             withdraw += valueBanknotes[i];
         }
     }
-    
-//     numberBanknotes[0] = (withdraw / valueBanknotes[0]);
-//     numberBanknotes[1] = ((withdraw % valueBanknotes[0]) / valueBanknotes[1]);
-//     numberBanknotes[2] = (((withdraw % valueBanknotes[0]) % valueBanknotes[1]) / valueBanknotes[2]);
-//     numberBanknotes[3] = ((((withdraw % valueBanknotes[0]) % valueBanknotes[1]) % valueBanknotes[2]) / valueBanknotes[3]);
-//     numberBanknotes[4] = (((((withdraw % valueBanknotes[0]) % valueBanknotes[1]) % valueBanknotes[2]) % valueBanknotes[3]) / valueBanknotes[4]);
-//     numberBanknotes[5] = ((((((withdraw % valueBanknotes[0]) % valueBanknotes[1]) % valueBanknotes[2]) % valueBanknotes[3]) % valueBanknotes[4]) / valueBanknotes[5]);
 }
 
 void terminalOutput(int *numberBanknotes, int *valueBanknotes, int typeBanknotes) {
-	cout << "=================================" << endl;
+	cout << "==================================" << endl;
 	for(int i = 0; i < typeBanknotes; i++){
     	cout << "Qtd. Cedulas de $ " + to_string(valueBanknotes[i]) + ",00: " + to_string(numberBanknotes[i]) << endl;
 	}
-	cout << "=================================" << endl;
+	cout << "==================================" << endl;
 }
+
 
 int main(){
     string input;                      //Declara variaveis
@@ -51,6 +62,11 @@ int main(){
     int *numberBanknotes = new int[typeBanknotes];                     //Declara ponteiros para arrays
     int *valueBanknotes = new int[typeBanknotes];
     
+	input = menu(input);
+
+	cout << input << endl;
+	return 0;
+
     registerNotes(valueBanknotes, typeBanknotes);                            //Cadastra valores de N notas diferentes
 
     while (exitSystem != 1){
@@ -61,7 +77,7 @@ int main(){
     	if(input == "exit"){
         	exitSystem = 1;
         	cout << "=================================" << endl;
-        	cout << "SISTEMA INTERROMPIDO - COD.exit" << endl;
+        	cout << "  SISTEMA FINALIZADO - COD.exit  " << endl;
         	cout << "=================================" << endl;
         	break;    
     	}
