@@ -135,7 +135,7 @@ int main(){
 				withdraw(input, currencySymbol, numberBanknotes, valueBanknotes, typeBanknotes);
 			}
 
-		}else if(input == "exit"){
+		}else if(input == "sair"){
 			cout << "==================================" << endl;
 			cout << " Sistema Finalizado - codigo.sair " << endl;
 			cout << "==================================" << endl; 
@@ -169,7 +169,7 @@ int main(){
 			cout << "==================================" << endl;
 			cout << " - Sacar:                         " << endl;
 			cout << "para sacar digite no terminal     " << endl;
-			cout << "\"sacar\" e entre com o valor    " << endl;
+			cout << "\"sacar\" e entre com o valor     " << endl;
 			cout << "desejado;                         " << endl;
 			cout << endl;
 			cout << " - Cadastrar:                     " << endl;
@@ -185,7 +185,7 @@ int main(){
 			cout << "\"sair\" e o sistema encerrar-se-a" << endl;
 			cout << endl;
 			cout << " - Oservacoes:                    " << endl;
-			cout << "* Nosso sistema nao trabalha com    " << endl;
+			cout << "* Nosso sistema nao trabalha com  " << endl;
 			cout << "moedas, ou seja, os centavos. Se  " << endl;
 			cout << "inseridos, serao ignorados pelo   " << endl;
 			cout << "programa;                         " << endl;
