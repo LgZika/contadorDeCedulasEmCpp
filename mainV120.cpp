@@ -5,7 +5,7 @@
 
 using namespace std;
 
-string menu(string input){
+string menu(string input){	// Função que exibe o menu
 	cout << "==================================" << endl;
 	cout << "       Contador de Cedulas!       " << endl;
 	cout << "          Menu Principal          " << endl;
@@ -24,7 +24,7 @@ string menu(string input){
 	return input;
 }
 
-int registerNotes(int *valueBanknotes, int typeBanknotes, string currencySymbol){
+int registerNotes(int *valueBanknotes, int typeBanknotes, string currencySymbol){ // Função para registrar e salvar as notas em um arquivo .txt
 	ofstream arquivo("dados.txt");
 	try{
 		if(arquivo.is_open()){
@@ -137,7 +137,7 @@ int main(){
 
 		}else if(input == "exit"){
 			cout << "==================================" << endl;
-			cout << "  Sistema Finalizado - code.exit  " << endl;
+			cout << " Sistema Finalizado - codigo.sair " << endl;
 			cout << "==================================" << endl; 
 
 		}else if(input == "cadastrar"){		
@@ -162,7 +162,7 @@ int main(){
 				typeBanknotes = registerNotes(valueBanknotes, typeBanknotes, currencySymbol);
 			}
 
-		}else if(input == "ajuda"){
+		}else if(input == "ajuda"){	// Seção de ajuda ao usuario final
 			
 			cout << "==================================" << endl;
 			cout << "          Secao de ajuda          " << endl;
@@ -174,9 +174,9 @@ int main(){
 			cout << endl;
 			cout << " - Cadastrar:                     " << endl;
 			cout << "para cadastrar digite no terminal " << endl;
-			cout << "\"cadastrar\", insira o simbolo   " << endl;
-			cout << "monetario da sua moeda, insira    " << endl;
-			cout << "quantas cedulas ira cadastrar e   " << endl;
+			cout << "\"cadastrar\", insira quantas     " << endl;
+			cout << "cedulas ira cadastrar, insira o   " << endl;
+			cout << "simbolo monetario da sua moeda e  " << endl;
 			cout << "insira o valor de cada cedula em  " << endl;
 			cout << "ordem decrescente;                " << endl;
 			cout << endl;
@@ -192,7 +192,7 @@ int main(){
 			cout << "* O sistema salva as ultimas      " << endl;
 			cout << "cedulas cadastradas e as carrega  " << endl;
 			cout << "sempre que iniciar                " << endl;
-			
+
 		}else{
 			cout << "Opcao Invalida" << endl;
 		}
