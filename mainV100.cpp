@@ -5,13 +5,15 @@
 
 using namespace std;
 
-string menu(string input){
+string menu(string input){	// Função que exibe o menu
 	cout << "==================================" << endl;
+	cout << "       Contador de Cedulas!       " << endl;
 	cout << "          Menu Principal          " << endl;
 	cout << "==================================" << endl;
 	cout << " - Sacar" << endl;
-	cout << " - Cadastrar Cedulas" << endl;
+	cout << " - Cadastrar" << endl;
 	cout << " - Ajuda" << endl;
+	cout << " - Sair" << endl;
 	cout << "==================================" << endl;
 	cout << "   Opcao: ";
 	cin >> input;
@@ -22,7 +24,7 @@ string menu(string input){
 	return input;
 }
 
-int registerNotes(int *valueBanknotes, int typeBanknotes, string currencySymbol){
+int registerNotes(int *valueBanknotes, int typeBanknotes, string currencySymbol){ // Função para registrar e salvar as notas em um arquivo .txt
 	ofstream arquivo("dados.txt");
 	try{
 		if(arquivo.is_open()){
@@ -92,7 +94,7 @@ void withdraw(string input, string currencySymbol, int *numberBanknotes, int *va
 }
 
 int main(){
-	ifstream arquivo("dados.txt");
+	ifstream arquivo;
     string input, currencySymbol;
     int typeBanknotes;
     int *numberBanknotes = new int[typeBanknotes];	// Alocação variável de memória para 2 vetores unidimensionais               
@@ -101,6 +103,7 @@ int main(){
 	valueBanknotes[0] = 0; 
 
 	try{
+		arquivo.open("dados.txt");
 		if(arquivo.is_open()){
 			typeBanknotes = 0;
 			arquivo >> currencySymbol;
@@ -119,7 +122,7 @@ int main(){
 		typeBanknotes = registerNotes(valueBanknotes, typeBanknotes, currencySymbol);
 	}
 	
-	while(input != "exit"){
+	while(input != "sair"){
     	input = menu(input);
 		
 		if(input == "sacar"){
@@ -132,16 +135,63 @@ int main(){
 				withdraw(input, currencySymbol, numberBanknotes, valueBanknotes, typeBanknotes);
 			}
 
-		}else if(input == "exit"){
+		}else if(input == "sair"){
 			cout << "==================================" << endl;
-			cout << "  Sistema Finalizado - code.exit  " << endl;
+			cout << " Sistema Finalizado - codigo.sair " << endl;
 			cout << "==================================" << endl; 
 
 		}else if(input == "cadastrar"){		
 			typeBanknotes = registerNotes(valueBanknotes, typeBanknotes, currencySymbol);  //Cadastra valores de N notas diferentes
+			try{
+				arquivo.open("dados.txt"); // lê o arquivo depois de salvar
+				if(arquivo.is_open()){
+					typeBanknotes = 0;
+					arquivo >> currencySymbol;
+					while(!arquivo.eof()){
+						arquivo >> valueBanknotes[typeBanknotes]; 
+						typeBanknotes++;
+					}
+					arquivo.close();
+				}else{
+					throw 404;
+				}
+			}catch(int aviso){
+				cout << "!!!Arquivo de dados nao pode ser carregado!!!" << endl;
+				cout << "                 code." << aviso << endl;
+				cout << "Cadastre as cedulas antes de iniciar;" << endl;
+				typeBanknotes = registerNotes(valueBanknotes, typeBanknotes, currencySymbol);
+			}
 
-		}else if(input == "ajuda"){
-			cout << "Seção de ajuda" << endl;
+		}else if(input == "ajuda"){	// Seção de ajuda ao usuario final
+			
+			cout << "==================================" << endl;
+			cout << "          Secao de ajuda          " << endl;
+			cout << "==================================" << endl;
+			cout << " - Sacar:                         " << endl;
+			cout << "para sacar digite no terminal     " << endl;
+			cout << "\"sacar\" e entre com o valor     " << endl;
+			cout << "desejado;                         " << endl;
+			cout << endl;
+			cout << " - Cadastrar:                     " << endl;
+			cout << "para cadastrar digite no terminal " << endl;
+			cout << "\"cadastrar\", insira quantas     " << endl;
+			cout << "cedulas ira cadastrar, insira o   " << endl;
+			cout << "simbolo monetario da sua moeda e  " << endl;
+			cout << "insira o valor de cada cedula em  " << endl;
+			cout << "ordem decrescente;                " << endl;
+			cout << endl;
+			cout << " - Sair:                          " << endl;
+			cout << "para sair digite no terminal      " << endl;
+			cout << "\"sair\" e o sistema encerrar-se-a" << endl;
+			cout << endl;
+			cout << " - Oservacoes:                    " << endl;
+			cout << "* Nosso sistema nao trabalha com  " << endl;
+			cout << "moedas, ou seja, os centavos. Se  " << endl;
+			cout << "inseridos, serao ignorados pelo   " << endl;
+			cout << "programa;                         " << endl;
+			cout << "* O sistema salva as ultimas      " << endl;
+			cout << "cedulas cadastradas e as carrega  " << endl;
+			cout << "sempre que iniciar                " << endl;
 
 		}else{
 			cout << "Opcao Invalida" << endl;
