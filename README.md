@@ -5,4 +5,7 @@ no terminal. Possui sistema para salvar e carregar o padrão das cédulas
 inseridas através de arquivo “.txt”. Contém validação de dados de entrada e
 alocação variável de memória.</p>
 <p>Para mais informações acesse a documentação do Software: </p>
-[Documentatio](https://github.com/LgZika/contadorDeCedulasEmCpp/blob/7c43ddce0696275dcc40681810997b229ad2d61e/DocumentacaoNoteCounterV1.pdf)
+
+See [Documentation](./DocumentacaoNoteCounterV1.pdf)
+
+[Documentation](https://github.com/LgZika/contadorDeCedulasEmCpp/blob/7c43ddce0696275dcc40681810997b229ad2d61e/DocumentacaoNoteCounterV1.pdf)
