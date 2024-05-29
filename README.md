@@ -1,4 +1,4 @@
-# contadorDeCedulasEmCpp
+# Contador De Cedulas Em C++
 
 <p>Software em C++ para contagem de cédulas monetárias com exibição padrão
 no terminal. Possui sistema para salvar e carregar o padrão das cédulas
