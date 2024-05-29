@@ -1,4 +1,4 @@
-# Contador De Cedulas Em C++
+# :money_with_wings: Contador De Cedulas Em C++ :money_with_wings:
 ## Descrição
 
 <p>
