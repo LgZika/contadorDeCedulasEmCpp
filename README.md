@@ -9,5 +9,5 @@
   Para mais informações acesse a documentação do Software: 
 </p>
 
-[Documentação](./DocumentacaoNoteCounterV1.pdf) 
+[Documentação](./documentationCurrencyNotesCounter.pdf) 
 
